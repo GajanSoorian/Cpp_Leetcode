@@ -11,6 +11,46 @@ void printArray(int a[]){
         std::cout<<std::endl;
 }
 
+void swap(int *valueA, int *valueB)
+{
+    int temp = *valueA;
+    *valueA=*valueB;
+    *valueB=temp;
+}
+
+
+int partition(int unsortedArray[],int start,int end)
+{
+  
+  int left = start+1;
+  int right = left;
+  
+  int pivot = start;
+ 
+  for(; right<=end; right++)
+  {
+      if(unsortedArray[right]<unsortedArray[pivot]){
+      swap(&unsortedArray[right],&unsortedArray[left]);
+      ++left;
+      }
+  }
+  swap(&unsortedArray[pivot],&unsortedArray[left-1]);
+  return (left-1);
+}
+
+void quicksort(int unsortedArray[],int start, int end)
+{
+ int pivot;
+ if(start<end)
+ {
+     pivot=partition(unsortedArray,start,end);
+     quicksort(unsortedArray,start,pivot-1); //left
+     quicksort(unsortedArray,pivot+1,end); //right
+     
+ }
+
+}
+
 
 void bubbleSort(int a[])
 {
@@ -86,7 +126,7 @@ void insertionSort(int a[])
                pass =false;
         }
     }
-    std::cout<<"Insertion Sort :";
+    std::cout<<"Insert Sort :";
     printArray(a);
 }
 
@@ -99,5 +139,8 @@ int main()
     selectionSort(b);
     int c[]={1,9,2,-2,0,-26,93,865,9};
     insertionSort(c);
-    
+    int d[]={1,9,2,-2,0,-26,93,865,9};
+    quicksort(d, 0, n);
+        std::cout<<"Quick Sort :";
+    printArray(d);
 }
