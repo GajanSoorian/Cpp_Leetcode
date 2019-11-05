@@ -1,0 +1,34 @@
+
+
+
+class Solution {
+    
+    int getLastDigit(int x)
+{
+   return x%10;
+}
+
+ int reduceInt(int lastDigit, int x)
+{
+    return (x-lastDigit)/10;
+}
+
+
+ int formInt(int revX,int digit,int digitLocation)
+{
+      revX=(revX*digitLocation)+digit;     
+      return revX;
+}
+    
+    public int reverse(int x) {
+            int revX=0;
+        int lastDigit, location=1;
+            do{
+                lastDigit=getLastDigit(x);
+                revX=formInt(revX,lastDigit,location);   //directly form the number
+                x=reduceInt(lastDigit,x);
+                location= 1*10;
+            }while(x>0);
+    return revX;
+    }
+};
