@@ -1,4 +1,10 @@
+// Example program
 #include <iostream>
+#include <string>
+#include<array>
+#include<vector>
+
+
 
 struct Node{
     int data;
@@ -17,9 +23,17 @@ int length;
 public:
 
 LinkedList():head(NULL),length(0){}
-~LinkedList(){} //Need to delete all nodes in the list.
+~LinkedList(){
+    Node *iterator=head;
+    while(iterator!=NULL)
+    {
+        head= head->next;
+        delete iterator;
+        iterator= head;
+    }
+    } //Need to delete all nodes in the list.
 
-void addNode(int value)
+void insert(int value)
 {
     Node *node=new Node(value);
     if(head==NULL)
@@ -46,6 +60,7 @@ void print()
 {
     int i=1;
     Node *iterator=head;
+    std::cout<<"list length = "<<length<<std::endl;
     while(iterator!=NULL)
     {
         std::cout<<"value at node "<<i<<"  = "<<iterator->data;
@@ -53,6 +68,34 @@ void print()
         ++i;
     }
 }
+
+void deleteAll()
+{
+    Node *iterator=head;
+        while(iterator!=NULL)
+    {
+        head= head->next;
+        delete iterator;
+        iterator= head;
+        --length;
+    }
+}
+
+
+void deleteNode(int deleteCount=1)
+{
+    Node *iterator=head;
+        while(iterator!=NULL && deleteCount>0)
+    {
+        head= head->next;
+        delete iterator;
+        iterator= head;
+        --length;
+        --deleteCount;
+    }
+}
+
+
 };
 
 int main()
@@ -60,11 +103,13 @@ int main()
 
 LinkedList linkedList;
 
-linkedList.addNode(10);
-linkedList.addNode(15);
-linkedList.addNode(20);
-linkedList.addNode(25);
-linkedList.listInfo();
+linkedList.insert(10);
+linkedList.insert(15);
+linkedList.insert(20);
+linkedList.insert(25);
+linkedList.print();
+linkedList.deleteNode(2);
+std::cout<<std::endl<<"after delete: "<<std::endl;
 linkedList.print();
 
 }
