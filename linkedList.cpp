@@ -39,9 +39,20 @@ void addNode(int value)
 
 void listInfo()
 {
-    std::cout<<"Length of the linked list is "<<length<<std::endl<<"head data is "<<head->data<<" Tail data is "<<tail->data;
+    std::cout<<"Length of the linked list is "<<length<<std::endl<<"head data is "<<head->data<<" Tail data is "<<tail->data<<std::endl;
 }
 
+void print()
+{
+    int i=1;
+    Node *iterator=head;
+    while(iterator!=NULL)
+    {
+        std::cout<<"value at node "<<i<<"  = "<<iterator->data;
+        iterator= iterator->next;
+        ++i;
+    }
+}
 };
 
 int main()
@@ -54,5 +65,6 @@ linkedList.addNode(15);
 linkedList.addNode(20);
 linkedList.addNode(25);
 linkedList.listInfo();
+linkedList.print();
 
 }
