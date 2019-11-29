@@ -6,4 +6,6 @@ Things I learnt from LeetCode:
 
 2) Test corner cases: like null input, all zero, negative, same values, overflow, etc.
 
+3) For space complexity Dont sweat the small variables like pointers and int etc.
+
 
