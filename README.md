@@ -10,4 +10,6 @@ Things I learnt from LeetCode:
 
 4) If you need to do an operation on two data containers, and iterate both, see if you can do just one operation and increment just one container per loop. Makes things simple and reduces duplicate code.
 
+5) Know when to sort and the trade of of that.
+
 
